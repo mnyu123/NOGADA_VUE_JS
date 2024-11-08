@@ -1,7 +1,7 @@
 <template>
   <div>
     <img src="@/assets/SIN.jpg" alt="신 창 섭" />
-    <button @click="handleClick">클릭하세요</button>
+    <button @click="handleClick">숭배하세요</button>
     <button @click="toggleMute" class="mute-button">
       <img :src="isMuted ? speakerOffIcon : speakerOnIcon" alt="Mute/Unmute" />
     </button>
@@ -23,6 +23,9 @@ export default {
     };
   },
   mounted() {
+    // 기본 페이지 제목 설정
+    document.title = '연습용';
+
     // YouTube IFrame API를 로드합니다.
     if (typeof YT === 'undefined' || typeof YT.Player === 'undefined') {
       const tag = document.createElement('script');
@@ -38,7 +41,7 @@ export default {
   },
   methods: {
     handleClick() {
-      alert('버튼이 클릭되었습니다!');
+      alert('정 상 화');
     },
     initializePlayer() {
       this.player = new YT.Player('player', {
@@ -66,8 +69,10 @@ export default {
       if (this.player) {
         if (this.isMuted) {
           this.player.unMute();
+          document.title = '신 창 섭'; // 음소거 해제 시 제목 변경
         } else {
           this.player.mute();
+          document.title = '연습용'; // 음소거 시 기본 제목으로 변경
         }
         this.isMuted = !this.isMuted;
       }
