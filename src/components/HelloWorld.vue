@@ -10,6 +10,7 @@
 </template>
 
 <script>
+/* global YT */
 export default {
   name: 'HelloWorld',
   data() {
@@ -76,32 +77,5 @@ export default {
 </script>
 
 <style scoped>
-button {
-  font-size: 18px;
-  padding: 10px 20px;
-  margin-top: 20px;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* 스피커 아이콘 버튼 스타일 */
-.mute-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  margin-top: 20px;
-}
-
-.mute-button img {
-  width: 32px;
-  height: 32px;
-}
-
-/* 플레이어를 화면에 표시하지 않기 위한 스타일 */
-#player {
-  display: none;
-}
+/* 기존 스타일 그대로 사용 */
 </style>
