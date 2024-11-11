@@ -1,11 +1,13 @@
 <template>
-  <div>
-    <img src="@/assets/SIN.jpg" alt="신 창 섭" />
-    <button @click="handleClick">숭배하세요</button>
-    <button @click="toggleMute" class="mute-button">
-      <img :src="isMuted ? speakerOffIcon : speakerOnIcon" alt="Mute/Unmute" />
-    </button>
-    <div id="player"></div>
+  <div class="container">
+    <img src="@/assets/SIN.jpg" alt="신 창 섭" class="main-image" />
+    <div class="buttons">
+      <button @click="handleClick" class="alert-button">숭배하세요</button>
+      <button @click="toggleMute" class="mute-button">
+        <img :src="isMuted ? speakerOffIcon : speakerOnIcon" alt="Mute/Unmute" />
+      </button>
+    </div>
+    <div id="player" class="video-player"></div>
   </div>
 </template>
 
@@ -45,6 +47,8 @@ export default {
     },
     initializePlayer() {
       this.player = new YT.Player('player', {
+        width: '100%',
+        height: '100%',
         videoId: this.youtubeVideoId,
         playerVars: {
           autoplay: 1,
@@ -82,5 +86,44 @@ export default {
 </script>
 
 <style scoped>
-/* 기존 스타일 그대로 사용 */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.main-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.alert-button, .mute-button {
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.video-player {
+  position: relative;
+  width: 100%;
+  /* 16:9 비율 유지 */
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.video-player iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 </style>
