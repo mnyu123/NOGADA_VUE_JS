@@ -24,7 +24,7 @@ export default {
     },
     methods: {
       handleClick() {
-        alert('정 상 화');
+        alert('민심 돌리기 들어가는 신창섭');
         if (this.player) {
           this.player.seekTo(23, true);
           this.player.playVideo();
